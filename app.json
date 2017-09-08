@@ -1,0 +1,21 @@
+{
+  "name": "Checkout SecuredFields Example",
+  "description": "A php server example containing our iframes SecuredFields solution",
+  "keywords": [
+    "Adyen",
+    "payments",
+    "checkout",
+    "Javascript",
+    "SecuredFields"
+  ],
+  "website": "https://www.adyen.com/",
+  "repository": "https://github.com/Adyen/adyen-secured-fields-php-example",
+  "env": {
+    "MERCHANT_ACCOUNT": {
+      "description": "Your merchant account"
+    },
+    "CHECKOUT_API_KEY": {
+      "description": "Your checkout API key"
+    }
+  }
+}

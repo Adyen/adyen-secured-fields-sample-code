@@ -1,0 +1,4 @@
+<files authentication.ini>
+  order deny,allow
+  deny from all
+</files>
