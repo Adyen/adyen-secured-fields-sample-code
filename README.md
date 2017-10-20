@@ -1,4 +1,4 @@
-# Checkout SDK PHP server example
+# Checkout Secured Fields PHP server example
 
 ## This repository is for demo purposes only
 This PHP server example is intended to help developers to get quickly up and running with our Secured Fields library. <br/>
