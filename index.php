@@ -12,7 +12,7 @@ include ('config/timezone.php');
     <title>Example PHP checkout</title>
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSecuredFields.1.0.min.js"></script>
+    <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSecuredFields.1.1.0.min.js"></script>
     <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/js/checkoutInitiatePayment.min.js"></script>
 </head>
 <body class="body">
