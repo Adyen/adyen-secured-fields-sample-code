@@ -11,7 +11,7 @@ To run this Secured Fields example, edit the following variables in the <b>confi
 <b>$checkoutAPIkey</b>= "YOUR CHECKOUT API KEY". <br/>
 
 These variables can be found in our customer area.
-For more information visit our <a href="https://docs.adyen.com/support/getting-started/step-1-create-a-test-account">getting started guide</a>.<br/>
+For more information visit our <a href="https://docs.adyen.com/developers/payments-basics/get-started-with-adyen">getting started guide</a>.<br/>
 
 ## Installation
 

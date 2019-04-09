@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var apiResponseData,
+    let apiResponseData,
         securedFields,
         paymentMethodType,
         showHint = false,
@@ -10,11 +10,27 @@ $(document).ready(function() {
 
 
     // Send styling to securedFields, for more information: https://docs.adyen.com/developers/checkout-javascript-sdk/styling-secured-fields
-    var hostedFieldStyle = {
+    const sfStyles = {
         base: {
-            fontSize: '16px'
+            color: '#000',
+            fontSize: '14px',
+            lineHeight: '14px'
+        },
+        error: {
+            color: 'red'
+        },
+        placeholder: {
+            color: '#d8d8d8'
+        },
+        validated:{
+            color: 'blue'
         }
     };
+
+    const placeholders = {
+        encryptedCardNumber : '9999 9999 9999 9999',
+        encryptedSecurityCode : '1234'
+    }
 
     // Functionality around showing hint on how to configure the 'setup' call
     var explanationDiv = $('.explanation');
@@ -45,23 +61,33 @@ $(document).ready(function() {
         var securedFieldsConfiguration = {
             configObject : jsonResponseObject,
             rootNode: '.form-div',
-            cssStyles : hostedFieldStyle
+            paymentMethods: {
+                card : {
+                    sfStyles,
+                    placeholders
+                }
+            }
         };
 
         // Pass config object to checkoutSecuredFields
         securedFields = csf(securedFieldsConfiguration);
 
         // Add listeners to checkoutSecuredFields
-        securedFields.onLoad( function(){
-            // Triggers when all the securedFields iframes are loaded
+        // See: https://docs.adyen.com/developers/checkout/api-integration/configure-secured-fields/secured-fields-callbacks
+        securedFields.onLoad( function(callbackObj){
+            // Triggered when all the securedFields iframes are loaded (but not yet ready to use)
+        });
+
+        securedFields.onConfigSuccess( function(callbackObj){
+            // Triggered when all the securedFields iframes are configured and ready to use
         });
 
         securedFields.onFieldValid( function(fieldValidObject){
-            // Triggers as individual input fields become valid - and triggers again if the same field becomes invalid
+            // Triggered as individual input fields become valid - and triggers again if the same field becomes invalid
         });
 
         securedFields.onAllValid( function(allValidObject){
-            // Triggers when all the credit card input fields are valid - and triggers again if this state changes
+            // Triggered when all the credit card input fields are valid - and triggers again if this state changes
 
             if (allValidObject.allValid === true) {
                 payButton.removeClass('disabled');
@@ -79,8 +105,16 @@ $(document).ready(function() {
             }
         });
 
-        securedFields.onError( function(pCallbackObj){
-            // Triggered when an error occurs e.g. invalid date
+        securedFields.onError( function(callbackObj){
+            // Triggered when an error occurs e.g. invalid date OR when an error is cleared
+        });
+
+        securedFields.onFocus( function(callbackObj){
+            // Triggered when a field gains, or loses, focus
+        });
+
+        securedFields.onBinValue( function(callbackObj){
+            // Triggered when the first six digits of the PAN are entered by the user
         });
     }
 
@@ -124,6 +158,7 @@ $(document).ready(function() {
             if(window.console && console.log){
                 console.log('### adyenCheckout::error:: args=', arguments);
             }
+            showHint = true;
         }
     });
 
