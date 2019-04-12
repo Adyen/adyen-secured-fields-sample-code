@@ -8,9 +8,10 @@ function url(){
 }
 
 /** Adyen checkout endpoints */
-$checkoutBaseURL = 'https://checkout-test.adyen.com/services/PaymentSetupAndVerification/v40';
-$checkoutSetupURL = $checkoutBaseURL . '/setup';
-$checkoutVerifyURL = $checkoutBaseURL . '/verify';
+$checkoutBaseURL = 'https://checkout-test.adyen.com/v41';
+$checkoutOriginKeysURL = $checkoutBaseURL . '/originKeys';
+$checkoutPaymentsURL = $checkoutBaseURL . '/payments';
+$checkoutDetailsURL = $checkoutPaymentsURL . '/details';
 
 /** Your server endpoints */
 /** @var $returnURL - the url you want the shopper to return to after they complete their transaction */
@@ -22,8 +23,9 @@ $shopperIP = $_SERVER['REMOTE_ADDR'];
 return array(
     'origin' => url(),
     'baseURL' => $checkoutBaseURL,
-    'setupURL' => $checkoutSetupURL,
-    'verifyURL' => $checkoutVerifyURL,
+    'originKeysURL' => $checkoutOriginKeysURL,
+    'paymentsURL' => $checkoutPaymentsURL,
+    'detailsURL' => $checkoutDetailsURL,
     'returnURL' => $returnURL,
     'shopperIP' => $shopperIP,
 );

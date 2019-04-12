@@ -1,0 +1,183 @@
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+html,
+body {
+    font: 16px/1.21 -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    background: #fcfcfc;
+    overflow: auto;
+    margin: 0;
+    min-height: 100vh;
+}
+
+body {
+    padding-top: 36px;
+}
+
+@media screen and (min-width: 1240px) {
+    body {
+        padding: 0 0 0 320px;
+    }
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #e6e9eb;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+@media screen and (min-width: 1240px) {
+    header {
+        position: fixed;
+        background: #f3f6f9;
+        height: 100%;
+        width: 320px;
+    }
+}
+
+h1 {
+    font-size: 1.4em;
+    font-weight: 200;
+    margin: 0;
+    padding: 12px;
+    width: 100%;
+}
+
+@media screen and (min-width: 1240px) {
+    h1 {
+        padding: 30px;
+    }
+}
+
+h1 span {
+    background: #06f;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 0.45em;
+    padding: 5px;
+    position: relative;
+    top: -5px;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+nav {
+    display: none;
+    width: 100%;
+}
+
+@media screen and (min-width: 1240px) {
+    nav {
+        display: block;
+    }
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 30px;
+    width: 100%;
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    border-right: 2px solid transparent;
+    color: #687282;
+    display: block;
+    line-height: 1.7em;
+    text-decoration: none;
+    transition: all 0.15s ease-out;
+}
+
+nav ul li:hover a {
+    border-right-color: #06f;
+    color: #06f;
+}
+
+p {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.explanation {
+    display: none;
+}
+
+/* Faux SDK */
+.merchant-checkout__form,
+.merchant-checkout__form *,
+.merchant-checkout__form * :before,
+.merchant-checkout__form :after {
+    box-sizing: border-box;
+}
+
+.merchant-checkout__form {
+    max-width: 600px;
+    width: 100%;
+    margin: 30px;
+}
+
+.merchant-checkout__payment-method {
+    background: #fff;
+    border: 1px solid #edf0f3;
+    cursor: pointer;
+    position: relative;
+    transition: opacity 0.3s ease-out;
+    width: 100%;
+    float: left;
+}
+
+.merchant-checkout__payment-method--hidden {
+    display: none;
+}
+
+.merchant-checkout__payment-method__header {
+    cursor: pointer;
+    align-items: center;
+    color: #00202e;
+    display: flex;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 16px;
+    position: relative;
+    transition: background 0.1s ease-out;
+    width: 100%;
+}
+
+.merchant-checkout__payment-method__header h2 {
+    font-weight: normal;
+}
+
+.merchant-checkout__payment-method--selected .merchant-checkout__payment-method__header h2 {
+    font-weight: bold;
+}
+
+.merchant-checkout__payment-method__details {
+    display: none;
+    padding: 0 16px 16px;
+}
+
+.merchant-checkout__payment-method__details button {
+    margin: 20px 0 0;
+}
+
+.merchant-checkout__payment-method--selected .merchant-checkout__payment-method__details {
+    display: block;
+}
+
+.merchant-checkout__payment-method__details__content {
+    padding: 6px 0 24px;
+}

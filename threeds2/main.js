@@ -209,6 +209,10 @@ $(document).ready(function() {
             case 'RedirectShopper':
                 window.location = result.redirect.url;
                 break;
+            case 'IdentifyShopper':
+            case 'ChallengeShopper':
+                threeDS2(result);
+                break;
             case 'Authorised':
                 sfText.innerText = result.resultCode;
                 document.querySelector('.secured-fields').style.display = 'none';
@@ -219,6 +223,62 @@ $(document).ready(function() {
         }
     }
 
+    function threeDS2(result) {
+        const button = document.querySelector('.js-securedfields');
+
+        const { authentication, paymentData, resultCode } = result;
+        const fingerprintToken = authentication['threeds2.fingerprintToken'] || '';
+        const challengeToken = authentication['threeds2.challengeToken'] || '';
+        window.paymentData = paymentData;
+
+        if (window.securedFields) {
+            window.securedFields.unmount();
+
+            const sfNode = document.querySelector('.secured-fields');
+            while (sfNode.firstChild) {
+                sfNode.removeChild(sfNode.firstChild);
+            }
+        }
+
+        if (button) {
+            button.remove();
+        }
+
+        sfText.innerText = resultCode;
+
+        if (resultCode === 'IdentifyShopper') {
+            const threeds2DeviceFingerprint = checkout
+                .create('threeDS2DeviceFingerprint', {
+                    fingerprintToken,
+                    paymentData,
+                    onComplete: handle3DS2ComponentResponse,
+                    onError: console.error
+                })
+                .mount('.secured-fields');
+
+            window.threeDS2DeviceFingerprint = threeds2DeviceFingerprint;
+        }
+
+        if (resultCode === 'ChallengeShopper') {
+            const threeDS2Challenge = checkout
+                .create('threeDS2Challenge', {
+                    challengeToken,
+                    size: '02', // optional, defaults to '01'
+                    paymentData,
+                    onComplete: handle3DS2ComponentResponse,
+                    onError: console.error
+                })
+                .mount('.secured-fields');
+
+            window.threeDS2Challenge = threeDS2Challenge;
+        }
+    };
+
+    function handle3DS2ComponentResponse(retrievedData) {
+
+        makeDetailsCall(retrievedData);
+    };
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////// PERFORM SETUP CALL /////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -228,7 +288,7 @@ $(document).ready(function() {
 
         $.ajax({
 
-            url: 'api/originKeys.php',
+            url: '../api/originKeys.php',
             dataType:'json',
             method:'POST',
 
@@ -269,7 +329,7 @@ $(document).ready(function() {
 
         $.ajax({
 
-            url: 'api/payments.php',
+            url: './threeds2/payments.php',
             dataType:'json',
             method:'POST',
             data: paymentData,
@@ -280,6 +340,29 @@ $(document).ready(function() {
 
             error : function(){
                 console.log('Server::startPayment error:: args=', arguments);
+            }
+        });
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////// MAKE 3DS2 DETAILS CALL /////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function makeDetailsCall({ data }){
+
+        $.ajax({
+
+            url: './threeds2/payments.details.php',
+            dataType:'json',
+            method:'POST',
+            data,
+
+            success:function(resultData) {
+                handlePaymentResult(resultData);
+            },
+
+            error : function(){
+                console.log('Server::makeDetailsCall error:: args=', arguments);
             }
         });
     }

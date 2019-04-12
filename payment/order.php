@@ -39,5 +39,5 @@ return array(
     'countryCode' => $countryCode,
     'shopperReference' => $shopperReference,
     'shopperLocale' => $shopperLocale,
-    'reference' => $reference,
+    'reference' => $reference
 );

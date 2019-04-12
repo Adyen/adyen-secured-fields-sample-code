@@ -1,7 +1,7 @@
 # Checkout Secured Fields PHP server example
 
 ## This repository is for demo purposes only
-This PHP server example is intended to help developers to get quickly up and running with our Secured Fields library. <br/>
+This PHP server example is intended to help developers to quickly get up and running with our SecuredFields v2.0 Component. <br/>
 Always ask a back-end developer to create an implementation of this product.
 
 ## Requirements
@@ -25,7 +25,11 @@ Alternatively, clone this repository and deploy it to your own PHP server
 
 ## Documentation
 
-<a href="Adyen Secured Fields">https://docs.adyen.com/developers/secured-fields</a>
+#### Migration from CheckoutSecuredfields 1.x
+See *Migration.md*
+
+#### SecuredFields 2.x Component
+*TBA*
 
 ## License
 

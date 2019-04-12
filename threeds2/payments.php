@@ -12,11 +12,15 @@ if (!empty (getenv('MERCHANT_ACCOUNT')) && !empty(getenv('CHECKOUT_API_KEY'))) {
 
 $order = include('../payment/order.php');
 $server = include('../config/server.php');
+$threeds2 = include('./threeds2.php');
 
 /** Set up the cURL call to  adyen */
-function requestPaymentData($order, $server, $authentication)
+function requestPaymentData($order, $server, $authentication, $threeds2)
 {
     $request = array(
+
+        'paymentMethod' => $_POST,
+
         /** All order specific settings can be found in payment/order.php */
 
         'amount' => $order['amount'],
@@ -34,7 +38,13 @@ function requestPaymentData($order, $server, $authentication)
 
         /** All merchant/authentication specific settings can be found in config/authentication.php */
 
-        'merchantAccount' => $authentication['merchantAccount']
+        'merchantAccount' => $authentication['merchantAccount'],
+
+
+        /** All order specific settings can be found in payment/threeds2.php */
+
+        'additionalData' => $threeds2['additionalData'],
+        'browserInfo' => $threeds2['browserInfo']
     );
 
     $setupString = json_encode($request);
@@ -52,7 +62,7 @@ function requestPaymentData($order, $server, $authentication)
     curl_setopt($curlAPICall, CURLOPT_RETURNTRANSFER, true);
 
     // Set the url
-    curl_setopt($curlAPICall, CURLOPT_URL, $server['setupURL']);
+    curl_setopt($curlAPICall, CURLOPT_URL, $server['paymentsURL']);
 
     // Api key
     curl_setopt($curlAPICall, CURLOPT_HTTPHEADER,
@@ -73,4 +83,4 @@ function requestPaymentData($order, $server, $authentication)
     echo $result;
 }
 
-requestPaymentData($order, $server, $authentication);
+requestPaymentData($order, $server, $authentication, $threeds2);

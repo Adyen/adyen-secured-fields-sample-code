@@ -34,7 +34,7 @@ include ('config/timezone.php');
     <div class="merchant-checkout__form">
         <div class="merchant-checkout__payment-method__header">
             <h2 class="sf-text">SecuredFields</h2>
-                    </div>
+        </div>
         <div class="merchant-checkout__payment-method">
             <div class="merchant-checkout__payment-method__details secured-fields" style="display:none;">
                 <span class="pm-image">
@@ -55,18 +55,18 @@ include ('config/timezone.php');
                     <span class="pm-input-field" data-cse="encryptedSecurityCode"></span>
                     <span class="pm-form-label__error-text">CVC Error text</span>
                 </label>
-                    </div>
+            </div>
             <div class="card-input__spinner__holder">
                 <div class="card-input__spinner card-input__spinner--active">
                     <div class="adyen-checkout__spinner__wrapper ">
                         <div class="adyen-checkout__spinner adyen-checkout__spinner--large"></div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
-    </div>
 
-    <!-- REGULAR FLOW -->
-    <script src = "assets/js/main.js" ></script >
+    <!-- 3DS2 FLOW -->
+    <script src = "threeds2/main.js" ></script >
 </body>
 </html>
