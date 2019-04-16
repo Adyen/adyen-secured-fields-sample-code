@@ -1,4 +1,4 @@
-# Checkout Secured Fields PHP server example
+# Secured Fields Component PHP server example
 
 ## This repository is for demo purposes only
 This PHP server example is intended to help developers to quickly get up and running with our SecuredFields v2.0 Component. <br/>
