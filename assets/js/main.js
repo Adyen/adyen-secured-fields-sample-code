@@ -85,7 +85,7 @@ $(document).ready(function() {
         };
 
         const onFocus = function(cbObj) {
-            const sfNode = cbObj.rootNode.querySelector(`[data-cse="${cbObj.fieldType}"]`);
+            const sfNode = cbObj.rootNode.querySelector('[data-cse="' + cbObj.fieldType + '"]');
             // Add focus
             if ( cbObj.focus) {
                 if (sfNode.className.indexOf('pm-input-field--focus') === -1) {
@@ -101,7 +101,7 @@ $(document).ready(function() {
         };
 
         const onError = function(cbObj) {
-            const sfNode = cbObj.rootNode.querySelector(`[data-cse="${cbObj.fieldType}"]`);
+            const sfNode = cbObj.rootNode.querySelector('[data-cse="' + cbObj.fieldType + '"]');
             const errorNode = sfNode.parentNode.querySelector('.pm-form-label__error-text');
             if (cbObj.error !== '') {
                 errorNode.style.display = 'block';
@@ -178,7 +178,7 @@ $(document).ready(function() {
 
         payBtn.textContent = 'Pay';
         payBtn.name = 'pay';
-        payBtn.classList.add('adyen-checkout__button', `js-${attribute}`);
+        payBtn.classList.add('adyen-checkout__button', 'js-' + attribute);
 
         payBtn.addEventListener('click', e => {
             e.preventDefault();
@@ -193,7 +193,6 @@ $(document).ready(function() {
     function handleOnChange(state) {
 
         if(!state.data.type) return;
-//        console.log(`${state.data.type} Component has changed isValid:${state.isValid} state=`, state);
 
         if(state.isValid){
             payButton.removeAttribute('disabled');
@@ -239,7 +238,7 @@ $(document).ready(function() {
 
                     const protocol = window.location.protocol;
                     const host = window.location.host;
-                    const url = `${protocol}//${host}`;
+                    const url = protocol + '//' + host;
                     const originKey = data.originKeys[url];
 
                     // Create SecuredFields component
