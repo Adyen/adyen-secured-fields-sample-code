@@ -251,7 +251,7 @@ $(document).ready(function() {
         if (resultCode === 'IdentifyShopper') {
             const threeds2DeviceFingerprint = checkout
                 .create('threeDS2DeviceFingerprint', {
-                    fingerprintToken: fingerprintToken
+                    fingerprintToken: fingerprintToken,
                     paymentData: paymentData,
                     onComplete: handle3DS2ComponentResponse,
                     onError: console.error
