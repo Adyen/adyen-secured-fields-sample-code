@@ -63,12 +63,12 @@ $(document).ready(function() {
         ///////////////////////////// CALLBACK FUNCTIONS FOR SECURED FIELDS /////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        const onConfigSuccess = (cbObj) => {
+        const onConfigSuccess = function(cbObj) {
             document.querySelector('.secured-fields').style.display = 'block';
             document.querySelector('.card-input__spinner__holder').style.display = 'none';
         };
 
-        const onBrand = (cbObj) => {
+        const onBrand = function(cbObj) {
             const holderDiv = document.querySelector('.secured-fields');
             holderDiv.querySelector('#pmImage').setAttribute('src', cbObj.brandImageUrl);
             let labelNode;
@@ -84,7 +84,7 @@ $(document).ready(function() {
             }
         };
 
-        const onFocus = (cbObj) => {
+        const onFocus = function(cbObj) {
             const sfNode = cbObj.rootNode.querySelector(`[data-cse="${cbObj.fieldType}"]`);
             // Add focus
             if ( cbObj.focus) {
@@ -100,7 +100,7 @@ $(document).ready(function() {
             }
         };
 
-        const onError = (cbObj) => {
+        const onError = function(cbObj) {
             const sfNode = cbObj.rootNode.querySelector(`[data-cse="${cbObj.fieldType}"]`);
             const errorNode = sfNode.parentNode.querySelector('.pm-form-label__error-text');
             if (cbObj.error !== '') {
@@ -121,11 +121,11 @@ $(document).ready(function() {
             }
         };
 
-        const onFieldValid = (cbObj) => {
+        const onFieldValid = function(cbObj) {
 //            console.log('onFieldValid:: end digits =',cbObj.endDigits);
         };
 
-        const onBinValue = (cbObj) => {
+        const onBinValue = function(cbObj) {
 //            console.log('onBinValue:: bin =',cbObj.binValue);
         };
 
