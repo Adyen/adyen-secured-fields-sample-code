@@ -180,7 +180,7 @@ $(document).ready(function() {
         payBtn.name = 'pay';
         payBtn.classList.add('adyen-checkout__button', 'js-' + attribute);
 
-        payBtn.addEventListener('click', e => {
+        payBtn.addEventListener('click', function(e) {
             e.preventDefault();
             startPayment(component);
         });
