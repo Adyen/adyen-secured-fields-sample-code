@@ -225,7 +225,10 @@ $(document).ready(function() {
     function threeDS2(result) {
         const button = document.querySelector('.js-securedfields');
 
-        const { authentication, paymentData, resultCode } = result;
+        const authentication = result.authentication;
+        const paymentData = result.paymentData;
+        const resultCode = result.resultCode;
+
         const fingerprintToken = authentication['threeds2.fingerprintToken'] || '';
         const challengeToken = authentication['threeds2.challengeToken'] || '';
         window.paymentData = paymentData;
@@ -322,7 +325,9 @@ $(document).ready(function() {
     //////////////////////////////////////// MAKE PAYMENT ///////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    function startPayment({ paymentData }){
+    function startPayment(component){
+
+        const paymentData = component.paymentData;
 
         payButton.setAttribute('disabled', 'true');
 
