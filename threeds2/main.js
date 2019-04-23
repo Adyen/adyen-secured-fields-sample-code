@@ -251,8 +251,8 @@ $(document).ready(function() {
         if (resultCode === 'IdentifyShopper') {
             const threeds2DeviceFingerprint = checkout
                 .create('threeDS2DeviceFingerprint', {
-                    fingerprintToken,
-                    paymentData,
+                    fingerprintToken: fingerprintToken
+                    paymentData: paymentData,
                     onComplete: handle3DS2ComponentResponse,
                     onError: console.error
                 })
@@ -264,9 +264,9 @@ $(document).ready(function() {
         if (resultCode === 'ChallengeShopper') {
             const threeDS2Challenge = checkout
                 .create('threeDS2Challenge', {
-                    challengeToken,
+                    challengeToken: challengeToken,
                     size: '02', // optional, defaults to '01'
-                    paymentData,
+                    paymentData: paymentData,
                     onComplete: handle3DS2ComponentResponse,
                     onError: console.error
                 })
