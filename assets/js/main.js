@@ -135,7 +135,7 @@ $(document).ready(function() {
 
         window.checkout = new AdyenCheckout({
             locale: 'en-US',
-            originKey,
+            originKey: originKey,
             loadingContext: 'https://checkoutshopper-test.adyen.com/checkoutshopper/',
             onChange: handleOnChange,
             onError: console.error
@@ -150,17 +150,17 @@ $(document).ready(function() {
             .create('securedfields', {
                 type: 'card',
                 groupTypes: ['mc', 'visa', 'amex', 'bcmc', 'maestro'],
-                styles,
-                placeholders,
-                ariaLabels,
+                styles: styles,
+                placeholders : placeholders,
+                ariaLabels: ariaLabels,
                 allowedDOMAccess: false, // Whether encrypted blobs will be added to the DOM. OPTIONAL - defaults to false
                 autoFocus: true, // Whether focus will automatically jump from date to security code fields. OPTIONAL - defaults to true
-                onConfigSuccess,
-                onBrand,
-                onFocus,
-                onError,
-                onFieldValid,
-                onBinValue
+                onConfigSuccess: onConfigSuccess,
+                onBrand: onBrand,
+                onFocus: onFocus,
+                onError: onError,
+                onFieldValid: onFieldValid,
+                onBinValue: onBinValue
             })
             .mount('.secured-fields');
         //--------------------------------------------------------------------------------------------------
