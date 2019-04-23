@@ -63,12 +63,12 @@ $(document).ready(function() {
         ///////////////////////////// CALLBACK FUNCTIONS FOR SECURED FIELDS /////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        const onConfigSuccess = function(cbObj) {
+        const onConfigSuccess = (cbObj) => {
             document.querySelector('.secured-fields').style.display = 'block';
             document.querySelector('.card-input__spinner__holder').style.display = 'none';
         };
 
-        const onBrand = function(cbObj) {
+        const onBrand = (cbObj) => {
             const holderDiv = document.querySelector('.secured-fields');
             holderDiv.querySelector('#pmImage').setAttribute('src', cbObj.brandImageUrl);
             let labelNode;
@@ -84,8 +84,8 @@ $(document).ready(function() {
             }
         };
 
-        const onFocus = function(cbObj) {
-            const sfNode = cbObj.rootNode.querySelector('[data-cse="' + cbObj.fieldType + '"]');
+        const onFocus = (cbObj) => {
+            const sfNode = cbObj.rootNode.querySelector(`[data-cse="${cbObj.fieldType}"]`);
             // Add focus
             if ( cbObj.focus) {
                 if (sfNode.className.indexOf('pm-input-field--focus') === -1) {
@@ -100,8 +100,8 @@ $(document).ready(function() {
             }
         };
 
-        const onError = function(cbObj) {
-            const sfNode = cbObj.rootNode.querySelector('[data-cse="' + cbObj.fieldType + '"]');
+        const onError = (cbObj) => {
+            const sfNode = cbObj.rootNode.querySelector(`[data-cse="${cbObj.fieldType}"]`);
             const errorNode = sfNode.parentNode.querySelector('.pm-form-label__error-text');
             if (cbObj.error !== '') {
                 errorNode.style.display = 'block';
@@ -121,11 +121,11 @@ $(document).ready(function() {
             }
         };
 
-        const onFieldValid = function(cbObj) {
+        const onFieldValid = (cbObj) => {
 //            console.log('onFieldValid:: end digits =',cbObj.endDigits);
         };
 
-        const onBinValue = function(cbObj) {
+        const onBinValue = (cbObj) => {
 //            console.log('onBinValue:: bin =',cbObj.binValue);
         };
 
@@ -135,7 +135,7 @@ $(document).ready(function() {
 
         window.checkout = new AdyenCheckout({
             locale: 'en-US',
-            originKey: originKey,
+            originKey,
             loadingContext: 'https://checkoutshopper-test.adyen.com/checkoutshopper/',
             onChange: handleOnChange,
             onError: console.error
@@ -150,17 +150,17 @@ $(document).ready(function() {
             .create('securedfields', {
                 type: 'card',
                 groupTypes: ['mc', 'visa', 'amex', 'bcmc', 'maestro'],
-                styles: styles,
-                placeholders : placeholders,
-                ariaLabels: ariaLabels,
+                styles,
+                placeholders,
+                ariaLabels,
                 allowedDOMAccess: false, // Whether encrypted blobs will be added to the DOM. OPTIONAL - defaults to false
                 autoFocus: true, // Whether focus will automatically jump from date to security code fields. OPTIONAL - defaults to true
-                onConfigSuccess: onConfigSuccess,
-                onBrand: onBrand,
-                onFocus: onFocus,
-                onError: onError,
-                onFieldValid: onFieldValid,
-                onBinValue: onBinValue
+                onConfigSuccess,
+                onBrand,
+                onFocus,
+                onError,
+                onFieldValid,
+                onBinValue
             })
             .mount('.secured-fields');
         //--------------------------------------------------------------------------------------------------
@@ -178,9 +178,9 @@ $(document).ready(function() {
 
         payBtn.textContent = 'Pay';
         payBtn.name = 'pay';
-        payBtn.classList.add('adyen-checkout__button', 'js-' + attribute);
+        payBtn.classList.add('adyen-checkout__button', `js-${attribute}`);
 
-        payBtn.addEventListener('click', function(e) {
+        payBtn.addEventListener('click', e => {
             e.preventDefault();
             startPayment(component);
         });
@@ -193,6 +193,7 @@ $(document).ready(function() {
     function handleOnChange(state) {
 
         if(!state.data.type) return;
+//        console.log(`${state.data.type} Component has changed isValid:${state.isValid} state=`, state);
 
         if(state.isValid){
             payButton.removeAttribute('disabled');
@@ -225,10 +226,7 @@ $(document).ready(function() {
     function threeDS2(result) {
         const button = document.querySelector('.js-securedfields');
 
-        const authentication = result.authentication;
-        const paymentData = result.paymentData;
-        const resultCode = result.resultCode;
-
+        const { authentication, paymentData, resultCode } = result;
         const fingerprintToken = authentication['threeds2.fingerprintToken'] || '';
         const challengeToken = authentication['threeds2.challengeToken'] || '';
         window.paymentData = paymentData;
@@ -251,8 +249,8 @@ $(document).ready(function() {
         if (resultCode === 'IdentifyShopper') {
             const threeds2DeviceFingerprint = checkout
                 .create('threeDS2DeviceFingerprint', {
-                    fingerprintToken: fingerprintToken,
-                    paymentData: paymentData,
+                    fingerprintToken,
+                    paymentData,
                     onComplete: handle3DS2ComponentResponse,
                     onError: console.error
                 })
@@ -264,9 +262,9 @@ $(document).ready(function() {
         if (resultCode === 'ChallengeShopper') {
             const threeDS2Challenge = checkout
                 .create('threeDS2Challenge', {
-                    challengeToken: challengeToken,
+                    challengeToken,
                     size: '02', // optional, defaults to '01'
-                    paymentData: paymentData,
+                    paymentData,
                     onComplete: handle3DS2ComponentResponse,
                     onError: console.error
                 })
@@ -301,7 +299,7 @@ $(document).ready(function() {
 
                     const protocol = window.location.protocol;
                     const host = window.location.host;
-                    const url = protocol + '//' + host;
+                    const url = `${protocol}//${host}`;
                     const originKey = data.originKeys[url];
 
                     // Create SecuredFields component
@@ -325,9 +323,7 @@ $(document).ready(function() {
     //////////////////////////////////////// MAKE PAYMENT ///////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    function startPayment(component){
-
-        const paymentData = component.paymentData;
+    function startPayment({ paymentData }){
 
         payButton.setAttribute('disabled', 'true');
 
