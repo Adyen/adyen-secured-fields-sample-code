@@ -13,8 +13,8 @@ include ('config/timezone.php');
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/securedFields.style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/2.4.1/adyen.css" />
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/2.4.1/adyen.js"></script>
+    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/2.5.0/adyen.css" />
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/2.5.0/adyen.js"></script>
 </head>
 <body class="body">
 <div class="content">
@@ -34,7 +34,7 @@ include ('config/timezone.php');
     <div class="merchant-checkout__form">
         <div class="merchant-checkout__payment-method__header">
             <h2 class="sf-text">SecuredFields</h2>
-                    </div>
+        </div>
         <div class="merchant-checkout__payment-method">
             <div class="merchant-checkout__payment-method__details secured-fields" style="display:none;">
                 <span class="pm-image">
@@ -55,15 +55,15 @@ include ('config/timezone.php');
                     <span class="pm-input-field" data-cse="encryptedSecurityCode"></span>
                     <span class="pm-form-label__error-text">CVC Error text</span>
                 </label>
-                    </div>
+            </div>
             <div class="card-input__spinner__holder">
                 <div class="card-input__spinner card-input__spinner--active">
                     <div class="adyen-checkout__spinner__wrapper ">
                         <div class="adyen-checkout__spinner adyen-checkout__spinner--large"></div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- REGULAR FLOW -->
