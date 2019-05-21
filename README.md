@@ -29,7 +29,7 @@ Alternatively, clone this repository and deploy it to your own PHP server
 See *Migration.md*
 
 #### SecuredFields 2.x Component
-*TBA*
+https://docs.adyen.com/checkout/api-integration/build-your-own-payment-form/#step-2-collect-shopper-details-with-secured-fields
 
 ## License
 
