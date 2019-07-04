@@ -26,7 +26,7 @@ Alternatively, clone this repository and deploy it to your own PHP server
 ## Documentation
 
 #### Migration from CheckoutSecuredfields 1.x
-See *Migration.md*
+See *Migration.md* (https://github.com/Adyen/adyen-secured-fields-sample-code/blob/master/Migration.md)
 
 #### SecuredFields 2.x Component
 https://docs.adyen.com/payment-methods/cards/custom-card-fields
