@@ -192,8 +192,8 @@ $(document).ready(function() {
 
     function handleOnChange(state) {
 
-        if(!state.data.type) return;
-//        console.log(`${state.data.type} Component has changed isValid:${state.isValid} state=`, state);
+        if (!state.data || !state.data.paymentMethod) return;
+//        console.log(`${state.data.paymentMethod.type} Component has changed isValid:${state.isValid} state=`, state);
 
         if(state.isValid){
             payButton.removeAttribute('disabled');
@@ -263,7 +263,7 @@ $(document).ready(function() {
     //////////////////////////////////////// MAKE PAYMENT ///////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    function startPayment({ paymentData }){
+    function startPayment(component){
 
         payButton.setAttribute('disabled', 'true');
 
@@ -272,7 +272,7 @@ $(document).ready(function() {
             url: 'api/payments.php',
             dataType:'json',
             method:'POST',
-            data: paymentData,
+            data: component.data.paymentMethod,
 
             success:function(data) {
                 handlePaymentResult(data);
