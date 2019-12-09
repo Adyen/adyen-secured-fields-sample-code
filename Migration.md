@@ -204,7 +204,7 @@ response from the `/payments` request demands it.<br/>
 See https://docs.adyen.com/developers/risk-management/3d-secure-2/3ds2-checkout-api-integration
 
 
-#### 3DS2.0 Example
-To see an example of 3DS2 in action run the sample code using the url: `/index_with3DS2.php`<br/>
+#### 3DS 2.0 Example
+To see an example of 3DS 2.0 in action run the sample code using the url: `/index_with3DS2.php`<br/>
 For relevant test card numbers see https://docs.adyen.com/developers/risk-management/3d-secure-2/3ds2-checkout-api-integration#testing3dsecure2
 <br />(and https://docs.adyen.com/developers/development-resources/test-cards/test-card-numbers for test expiry date and security code credentials).

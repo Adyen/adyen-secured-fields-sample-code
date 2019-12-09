@@ -31,6 +31,11 @@ See *Migration.md* (https://github.com/Adyen/adyen-secured-fields-sample-code/bl
 #### SecuredFields 2.x Component
 https://docs.adyen.com/payment-methods/cards/custom-card-fields
 
+#### 3DS 2.0 Example
+To see an example of 3DS 2.0 in action run the sample code using the url: `/index_with3DS2.php`<br/>
+For relevant test card numbers see https://docs.adyen.com/developers/risk-management/3d-secure-2/3ds2-checkout-api-integration#testing3dsecure2
+<br />(and https://docs.adyen.com/developers/development-resources/test-cards/test-card-numbers for test expiry date and security code credentials).
+
 ## License
 
 This repository is open source and available under the MIT license. For more information, see the LICENSE file.
