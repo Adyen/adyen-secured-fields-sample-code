@@ -10,7 +10,7 @@ $(document).ready(function() {
         }
     }
 
-    window.setTimeout(showExplanation, 4000);
+    window.setTimeout(showExplanation, 5000);
     //-----------------------------------------------------------------------
 
     let csfHideCVC = false;
@@ -242,8 +242,12 @@ $(document).ready(function() {
                     const url = `${protocol}//${host}`;
                     const originKey = data.originKeys[url];
 
-                    // Create SecuredFields component
-                    createSecuredFields(originKey);
+                    if(originKey){
+                        // Create SecuredFields component
+                        createSecuredFields(originKey);
+                    }else{
+                        showHint = true;
+                    }
 
                 }else{
 
