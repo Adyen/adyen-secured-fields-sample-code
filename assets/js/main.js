@@ -136,7 +136,7 @@ $(document).ready(function() {
         window.checkout = new AdyenCheckout({
             locale: 'en-US',
             originKey,
-            loadingContext: 'https://checkoutshopper-test.adyen.com/checkoutshopper/',
+            environment: 'test',
             onChange: handleOnChange,
             onError: console.error
         });

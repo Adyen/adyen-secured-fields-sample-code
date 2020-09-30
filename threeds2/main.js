@@ -122,11 +122,11 @@ $(document).ready(function() {
         };
 
         const onFieldValid = (cbObj) => {
-//            console.log('onFieldValid:: end digits =',cbObj.endDigits);
+            //            console.log('onFieldValid:: end digits =',cbObj.endDigits);
         };
 
         const onBinValue = (cbObj) => {
-//            console.log('onBinValue:: bin =',cbObj.binValue);
+            //            console.log('onBinValue:: bin =',cbObj.binValue);
         };
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -136,9 +136,10 @@ $(document).ready(function() {
         window.checkout = new AdyenCheckout({
             locale: 'en-US',
             originKey,
-            loadingContext: 'https://checkoutshopper-test.adyen.com/checkoutshopper/',
+            environment: 'test',
             onChange: handleOnChange,
-            onError: console.error
+            onError: console.error,
+            onAdditionalDetails: makeDetailsCall
         });
 
 
@@ -193,7 +194,7 @@ $(document).ready(function() {
     function handleOnChange(state) {
 
         if (!state.data || !state.data.paymentMethod) return;
-//        console.log(`${state.data.paymentMethod.type} Component has changed isValid:${state.isValid} state=`, state);
+        //        console.log(`${state.data.paymentMethod.type} Component has changed isValid:${state.isValid} state=`, state);
 
         if(state.isValid){
             payButton.removeAttribute('disabled');
@@ -226,10 +227,7 @@ $(document).ready(function() {
     function threeDS2(result) {
         const button = document.querySelector('.js-securedfields');
 
-        const { authentication, paymentData, resultCode } = result;
-        const fingerprintToken = authentication['threeds2.fingerprintToken'] || '';
-        const challengeToken = authentication['threeds2.challengeToken'] || '';
-        window.paymentData = paymentData;
+        const { resultCode } = result;
 
         if (window.securedFields) {
             window.securedFields.unmount();
@@ -246,38 +244,11 @@ $(document).ready(function() {
 
         sfText.innerText = resultCode;
 
-        if (resultCode === 'IdentifyShopper') {
-            const threeds2DeviceFingerprint = checkout
-                .create('threeDS2DeviceFingerprint', {
-                    fingerprintToken,
-                    paymentData,
-                    onComplete: handle3DS2ComponentResponse,
-                    onError: console.error
-                })
-                .mount('.secured-fields');
+        if (resultCode === 'IdentifyShopper' || resultCode === 'ChallengeShopper') {
 
-            window.threeDS2DeviceFingerprint = threeds2DeviceFingerprint;
+            window.checkout.createFromAction(result.action).mount('.secured-fields');
         }
-
-        if (resultCode === 'ChallengeShopper') {
-            const threeDS2Challenge = checkout
-                .create('threeDS2Challenge', {
-                    challengeToken,
-                    size: '02', // optional, defaults to '01'
-                    paymentData,
-                    onComplete: handle3DS2ComponentResponse,
-                    onError: console.error
-                })
-                .mount('.secured-fields');
-
-            window.threeDS2Challenge = threeDS2Challenge;
-        }
-    };
-
-    function handle3DS2ComponentResponse(retrievedData) {
-
-        makeDetailsCall(retrievedData);
-    };
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////// PERFORM SETUP CALL /////////////////////////////////////////
