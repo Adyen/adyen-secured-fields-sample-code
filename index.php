@@ -13,8 +13,8 @@ include ('config/timezone.php');
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/securedFields.style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.6.1/adyen.css" />
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.6.1/adyen.js"></script>
+    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.14.1/adyen.css" />
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.14.1/adyen.js"></script>
 </head>
 <body class="body">
 <div class="content">

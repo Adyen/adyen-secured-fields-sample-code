@@ -8,7 +8,7 @@ function url(){
 }
 
 /** Adyen checkout endpoints */
-$checkoutBaseURL = 'https://checkout-test.adyen.com/v41';
+$checkoutBaseURL = 'https://checkout-test.adyen.com/v53';
 $checkoutOriginKeysURL = $checkoutBaseURL . '/originKeys';
 $checkoutPaymentsURL = $checkoutBaseURL . '/payments';
 $checkoutDetailsURL = $checkoutPaymentsURL . '/details';
