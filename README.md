@@ -25,16 +25,15 @@ Alternatively, clone this repository and deploy it to your own PHP server
 
 ## Documentation
 
-#### Migration from CheckoutSecuredfields 1.x
+#### Migration from CheckoutSecuredFields 1.x
 See *Migration.md* (https://github.com/Adyen/adyen-secured-fields-sample-code/blob/master/Migration.md)
 
 #### SecuredFields 2.x Component
-https://docs.adyen.com/payment-methods/cards/custom-card-fields
+https://docs.adyen.com/payment-methods/cards/custom-card-integration
 
 #### 3DS 2.0 Example
 To see an example of 3DS 2.0 in action run the sample code using the url: `/index_with3DS2.php`<br/>
-For relevant test card numbers see https://docs.adyen.com/developers/risk-management/3d-secure-2/3ds2-checkout-api-integration#testing3dsecure2
-<br />(and https://docs.adyen.com/developers/development-resources/test-cards/test-card-numbers for test expiry date and security code credentials).
+For relevant test card numbers, test expiry date and security code credentials, see https://docs.adyen.com/classic-integration/3d-secure/native-3ds2/browser-based-integration#testing-3d-secure-2
 
 ## License
 
