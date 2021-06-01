@@ -1,5 +1,10 @@
 <?php
 include ('config/timezone.php');
+if (!empty (getenv('CLIENT_KEY'))) {
+    $authentication['clientKey'] = getenv('CLIENT_KEY');
+} else {
+    $authentication = parse_ini_file('./config/authentication.ini', true);
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,17 +18,21 @@ include ('config/timezone.php');
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/securedFields.style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.14.1/adyen.css" />
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/3.14.1/adyen.js"></script>
+    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.5.0/adyen.css" />
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.5.0/adyen.js"></script>
 </head>
 <body class="body">
+<script type="text/javascript">
+    window.clientKey = "<?php echo $authentication['clientKey'] ?>";
+</script>
 <div class="content">
     <div class="explanation">
         <h3>To run this securedFields example: </h3>
         <p>
             <b>1)</b> Edit the following PHP variables in the <b>config/authentication.ini</b> file:</br></br>
-            <b>$merchantAccount</b>: 'YOUR MERCHANT ACCOUNT', more information in our <a href="https://docs.adyen.com/developers/payments-basics/get-started-with-adyen">Getting started guide</a>.<br/>
-            <b>$checkoutAPIkey</b>: 'YOUR CHECKOUT API KEY'.
+            <b>$merchantAccount</b>: 'YOUR MERCHANT ACCOUNT', more information in <a href="https://docs.adyen.com/account/manage-account-structure">Manage you account structure</a>.<br/>
+            <b>$checkoutAPIkey</b>: 'YOUR CHECKOUT API KEY', more information in <a href="https://docs.adyen.com/development-resources/api-credentials">API credentials</a>.<br/>
+            <b>$clientKey</b>: 'YOUR CHECKOUT CLIENT KEY', more information in <a href="https://docs.adyen.com/development-resources/client-side-authentication#get-your-client-key">Client-side authentication</a>.
         </p>
         <p>
             <b>2)</b> Also make sure that the <i>url</i> function in <b>config/server.php</b> is setting the protocol to the correct value (it might need to be <i>http</i> if you are running these files locally)
