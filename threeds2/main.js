@@ -139,7 +139,10 @@ $(document).ready(function() {
             environment: 'test',
             onChange: handleOnChange,
             onError: console.error,
-            onAdditionalDetails: makeDetailsCall
+            onAdditionalDetails: makeDetailsCall,
+            paymentMethodsConfiguration : {
+                threeDS2: {challengeWindowSize: '04'}
+            }
         });
 
 
@@ -161,8 +164,7 @@ $(document).ready(function() {
                 onFocus,
                 onError,
                 onFieldValid,
-                onBinValue,
-                challengeWindowSize: '04'
+                onBinValue
             })
             .mount('.secured-fields');
         //--------------------------------------------------------------------------------------------------
