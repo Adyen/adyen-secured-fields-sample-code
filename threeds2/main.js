@@ -135,7 +135,7 @@ $(document).ready(function() {
 
         window.checkout = new AdyenCheckout({
             locale: 'en-US',
-            originKey,
+            clientKey,
             environment: 'test',
             onChange: handleOnChange,
             onError: console.error,
@@ -161,7 +161,8 @@ $(document).ready(function() {
                 onFocus,
                 onError,
                 onFieldValid,
-                onBinValue
+                onBinValue,
+                challengeWindowSize: '04'
             })
             .mount('.secured-fields');
         //--------------------------------------------------------------------------------------------------
@@ -246,7 +247,8 @@ $(document).ready(function() {
 
         if (resultCode === 'IdentifyShopper' || resultCode === 'ChallengeShopper') {
 
-            window.checkout.createFromAction(result.action).mount('.secured-fields');
+//            window.checkout.createFromAction(result.action).mount('.secured-fields');
+            window.securedFields.handleAction(result.action);
         }
     }
 
