@@ -7,11 +7,16 @@ Always ask a back-end developer to create an implementation of this product.
 ## Requirements
 To run this Secured Fields example, edit the following variables in the <b>config/authentication.ini</b> file:<br/>
 
-<b>$merchantAccount</b>= "YOURMERCHANTACCOUNT". <br/>
+<b>$merchantAccount</b>= "YOUR MERCHANT ACCOUNT". <br/>
 <b>$checkoutAPIkey</b>= "YOUR CHECKOUT API KEY". <br/>
+<b>$clientKey</b>= "YOUR CHECKOUT CLIENT KEY". <br/>
 
 These variables can be found in our customer area.
-For more information visit our <a href="https://docs.adyen.com/developers/payments-basics/get-started-with-adyen">getting started guide</a>.<br/>
+For more information visit our <a href="https://docs.adyen.com/get-started-with-adyen">getting started guide</a>.<br/>
+Also of interest:<br/>
+<a href="https://docs.adyen.com/account/manage-account-structure">Manage you account structure</a><br/>
+<a href="https://docs.adyen.com/development-resources/api-credentials">API credentials</a>.<br/>
+<a href="https://docs.adyen.com/development-resources/client-side-authentication#get-your-client-key">Client-side authentication</a>.
 
 ## Installation
 

@@ -17,7 +17,7 @@ $(document).ready(function() {
     let payButton = null;
     const sfText = document.querySelector('.sf-text');
 
-    function createSecuredFields(originKey) {
+    function createSecuredFields(clientKey) {
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////// STYLING, PLACEHOLDERS & ARIA LABELS FOR SECURED FIELDS /////////////////////////
@@ -135,7 +135,7 @@ $(document).ready(function() {
 
         window.checkout = new AdyenCheckout({
             locale: 'en-US',
-            originKey,
+            clientKey,
             environment: 'test',
             onChange: handleOnChange,
             onError: console.error
@@ -225,42 +225,12 @@ $(document).ready(function() {
 
     // Make 'setup' call with originKeys.php - performs the server call to checkout.adyen.com
     function setup(){
-
-        $.ajax({
-
-            url: 'api/originKeys.php',
-            dataType:'json',
-            method:'POST',
-
-            success:function(data) {
-
-                // Check that the expected object has been loaded
-                if(data.hasOwnProperty('originKeys')){
-
-                    const protocol = window.location.protocol;
-                    const host = window.location.host;
-                    const url = `${protocol}//${host}`;
-                    const originKey = data.originKeys[url];
-
-                    if(originKey){
-                        // Create SecuredFields component
-                        createSecuredFields(originKey);
-                    }else{
-                        showHint = true;
-                    }
-
-                }else{
-
-                    // For demo purposes show hint to edit Merchant Account property etc
-                    showHint = true;
-                }
-            },
-
-            error : function(){
-                console.log('Server::originKeys error:: args=', arguments);
-                showHint = true;
-            }
-        });
+        if(window.clientKey){
+            createSecuredFields(window.clientKey);
+        }else{
+            // For demo purposes show hint to edit Merchant Account property etc
+            showHint = true;
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
