@@ -16,6 +16,9 @@
     },
     "CHECKOUT_API_KEY": {
       "description": "Your checkout API key"
+    },
+    "CLIENT_KEY": {
+      "description": "Your checkout clientKey"
     }
   }
 }
