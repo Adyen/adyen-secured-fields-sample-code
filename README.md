@@ -1,7 +1,7 @@
 # Secured Fields Component PHP server example
 
 ## This repository is for demo purposes only
-This PHP server example is intended to help developers to quickly get up and running with our SecuredFields (aka CustomCard) Component v4.0. <br/>
+This PHP server example is intended to help developers to quickly get up and running with our SecuredFields (aka CustomCard) Component v4.x. <br/>
 Always ask a back-end developer to create an implementation of this product.
 
 ## Requirements
@@ -39,6 +39,9 @@ See: https://docs.adyen.com/classic-integration/3d-secure/native-3ds2/browser-ba
 
 #### Migration from CheckoutSecuredFields 1.x
 See *Migration.md* (https://github.com/Adyen/adyen-secured-fields-sample-code/blob/master/Migration.md)
+
+#### Migration from CheckoutSecuredFields 2.x or 3.x
+See: https://docs.adyen.com/online-payments/migrate-to-web-4-0-0
 
 ## License
 
