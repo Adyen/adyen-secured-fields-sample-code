@@ -12,9 +12,10 @@ if (!empty (getenv('MERCHANT_ACCOUNT')) && !empty(getenv('CHECKOUT_API_KEY'))) {
 
 $order = include('../payment/order.php');
 $server = include('../config/server.php');
+$threeds2 = include('./threeds2.php');
 
 /** Set up the cURL call to  adyen */
-function requestPaymentData($order, $server, $authentication)
+function requestPaymentData($order, $server, $authentication, $threeds2)
 {
     $request = array(
 
@@ -37,7 +38,13 @@ function requestPaymentData($order, $server, $authentication)
 
         /** All merchant/authentication specific settings can be found in config/authentication.php */
 
-        'merchantAccount' => $authentication['merchantAccount']
+        'merchantAccount' => $authentication['merchantAccount'],
+
+
+        /** All order specific settings can be found in threeds2.php */
+
+        'additionalData' => $threeds2['additionalData'],
+        'browserInfo' => $threeds2['browserInfo']
     );
 
     $setupString = json_encode($request);
@@ -76,4 +83,4 @@ function requestPaymentData($order, $server, $authentication)
     echo $result;
 }
 
-requestPaymentData($order, $server, $authentication);
+requestPaymentData($order, $server, $authentication, $threeds2);

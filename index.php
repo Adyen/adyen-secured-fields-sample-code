@@ -19,8 +19,8 @@ if (!empty (getenv('CLIENT_KEY'))) {
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/securedFields.style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.5.0/adyen.css" />
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.5.0/adyen.js"></script>
+    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.6.0/adyen.css" />
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.6.0/adyen.js"></script>
 </head>
 <body class="body">
 <script type="text/javascript">
@@ -47,8 +47,25 @@ if (!empty (getenv('CLIENT_KEY'))) {
         </div>
         <div class="merchant-checkout__payment-method">
             <div class="merchant-checkout__payment-method__details secured-fields" style="display:none;">
-                <span class="pm-image">
-                    <img id="pmImage" width="40" src="https://checkoutshopper-test.adyen.com/checkoutshopper/images/logos/nocard.svg" alt="">
+                 <span class="pm-image">
+                    <img
+                        id="pmImage"
+                        width="40"
+                        src="https://checkoutshopper-test.adyen.com/checkoutshopper/images/logos/nocard.svg"
+                        alt="card"
+                    />
+                </span>
+                <span class="pm-image-dual">
+                    <img
+                        id="pmImageDual1"
+                        width="40"
+                        alt=""
+                    />
+                    <img
+                        id="pmImageDual2"
+                        width="40"
+                        alt=""
+                    />
                 </span>
                 <label class="pm-form-label">
                     <span class="pm-form-label__text">Card number:</span>

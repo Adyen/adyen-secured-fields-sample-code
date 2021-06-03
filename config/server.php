@@ -9,7 +9,7 @@ function url(){
 
 /** Adyen checkout endpoints */
 $checkoutBaseURL = 'https://checkout-test.adyen.com/v67';
-$checkoutOriginKeysURL = $checkoutBaseURL . '/originKeys';
+//$checkoutOriginKeysURL = $checkoutBaseURL . '/originKeys';// Deprecated
 $checkoutPaymentsURL = $checkoutBaseURL . '/payments';
 $checkoutDetailsURL = $checkoutPaymentsURL . '/details';
 
@@ -23,7 +23,7 @@ $shopperIP = $_SERVER['REMOTE_ADDR'];
 return array(
     'origin' => url(),
     'baseURL' => $checkoutBaseURL,
-    'originKeysURL' => $checkoutOriginKeysURL,
+//    'originKeysURL' => $checkoutOriginKeysURL,// Deprecated
     'paymentsURL' => $checkoutPaymentsURL,
     'detailsURL' => $checkoutDetailsURL,
     'returnURL' => $returnURL,
