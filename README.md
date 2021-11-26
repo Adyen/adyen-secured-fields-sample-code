@@ -38,7 +38,7 @@ To see an example of 3DS 2.0 in action run the sample code with the relevant (3D
 See: https://docs.adyen.com/classic-integration/3d-secure/native-3ds2/browser-based-integration#testing-3d-secure-2
 
 #### Migration from CheckoutSecuredFields 1.x
-See *Migration.md* (https://github.com/Adyen/adyen-secured-fields-sample-code/blob/master/Migration.md)
+See *Migration.md* (https://github.com/Adyen/adyen-secured-fields-sample-code/blob/main/Migration.md)
 
 #### Migration from CheckoutSecuredFields 2.x or 3.x
 See: https://docs.adyen.com/online-payments/migrate-to-web-4-0-0
