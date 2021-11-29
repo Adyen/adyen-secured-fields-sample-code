@@ -18,6 +18,10 @@ Also of interest:<br/>
 <a href="https://docs.adyen.com/development-resources/api-credentials">API credentials</a>.<br/>
 <a href="https://docs.adyen.com/development-resources/client-side-authentication#get-your-client-key">Client-side authentication</a>.
 
+Also make sure that the url function in config/server.php is setting the protocol to the correct value (it might need to be http if you are running these files locally) 
+
+To run with docker, run `$ docker run --rm -it -v $(pwd):/var/www/html -p 8080:80 php:7.4-apache` and then visit `http://localhost:8080`
+
 ## Installation
 
 ### Deploying this example to Heroku
